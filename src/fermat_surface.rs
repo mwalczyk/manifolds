@@ -25,23 +25,15 @@ pub struct FermatSurface {
 }
 
 impl FermatSurface {
-    pub fn new() -> FermatSurface {
+    pub fn new(n: u32, a: f32) -> FermatSurface {
         let mut surface = FermatSurface {
-            n: 6,
-            a: 1.0,
+            n,
+            a,
             points: vec![],
             polygons: vec![]
         };
 
         surface.build_topology();
-
-        for p in surface.points.iter() {
-            //println!("{} {} {}", p[0], p[1], p[2]);
-        }
-
-        for p in surface.polygons.iter() {
-            //println!("{} {} {}", p[0], p[1], p[2]);
-        }
         surface
     }
 

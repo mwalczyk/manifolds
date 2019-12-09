@@ -52,8 +52,8 @@ impl Complex {
         let phase = self.phase();
 
         return Complex::new(
-          magnitude,// * phase.cos(),
-          phase//magnitude * phase.sin()
+          magnitude,
+          phase
         );
     }
 
@@ -88,6 +88,7 @@ impl Complex {
         )
     }
 
+    /// Returns the result of raising this complex number to a real-number power
     pub fn pow(&self, scalar: f32) -> Complex {
         let polar = self.polar_form();
         let r = polar.re;

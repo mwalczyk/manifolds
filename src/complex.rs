@@ -12,10 +12,7 @@ pub struct Complex {
 
 impl Complex {
     pub fn new(re: f32, im: f32) -> Complex {
-        Complex {
-            re,
-            im
-        }
+        Complex { re, im }
     }
 
     /// Returns the complex conjugate `z*` of this complex number, which has
@@ -51,10 +48,7 @@ impl Complex {
         let magnitude = self.magnitude();
         let phase = self.phase();
 
-        return Complex::new(
-          magnitude,
-          phase
-        );
+        return Complex::new(magnitude, phase);
     }
 
     /// Returns the reciprocal `1 / z` of this complex number
@@ -67,7 +61,7 @@ impl Complex {
     pub fn sin(&self) -> Complex {
         Complex::new(
             self.re.sin() * self.im.cosh(),
-            self.re.cos() * self.im.sinh()
+            self.re.cos() * self.im.sinh(),
         )
     }
 
@@ -75,17 +69,14 @@ impl Complex {
     pub fn cos(&self) -> Complex {
         Complex::new(
             self.re.cos() * self.im.cosh(),
-            -self.re.sin() * self.im.sinh()
+            -self.re.sin() * self.im.sinh(),
         )
     }
 
     /// Returns `e` raised to the power of this complex number
     pub fn exp(&self) -> Complex {
         let coeff = self.re.exp();
-        Complex::new(
-            coeff * self.im.cos(),
-            coeff * self.im.sin()
-        )
+        Complex::new(coeff * self.im.cos(), coeff * self.im.sin())
     }
 
     /// Returns the result of raising this complex number to a real-number power
@@ -96,7 +87,7 @@ impl Complex {
 
         Complex::new(
             r.powf(scalar) * (scalar * phi).cos(),
-            r.powf(scalar) * (scalar * phi).sin()
+            r.powf(scalar) * (scalar * phi).sin(),
         )
     }
 }
@@ -161,7 +152,7 @@ impl Mul for Complex {
         //      (ac - bd) + (ad + bc)i
         Self {
             re: self.re * other.re - self.im * other.im,
-            im: self.re * other.im + self.im * other.re
+            im: self.re * other.im + self.im * other.re,
         }
     }
 }
@@ -173,7 +164,7 @@ impl Mul<f32> for Complex {
     fn mul(self, scalar: f32) -> Complex {
         Self {
             re: self.re * scalar,
-            im: self.im * scalar
+            im: self.im * scalar,
         }
     }
 }
@@ -189,7 +180,6 @@ impl Sub for Complex {
         }
     }
 }
-
 
 #[cfg(test)]
 mod tests {

@@ -14,14 +14,14 @@ fn linear_spacing(lower: f32, upper: f32, steps: usize) -> Vec<f32> {
 }
 
 type Point = [f32; 3];
-type Polygon = [usize; 3];
+type Polygon = [u32; 3];
 
 pub struct FermatSurface {
     /// The exponent used to generate this surface
     n: u32,
     a: f32,
-    points: Vec<Point>,
-    polygons: Vec<Polygon>,
+    pub points: Vec<Point>,
+    pub polygons: Vec<Polygon>,
 }
 
 impl FermatSurface {
@@ -114,10 +114,13 @@ impl FermatSurface {
 
             if i % steps != (steps - 1) {
                 // First triangle
-                self.polygons.push([i, i + 1, i + steps]);
+                self.polygons
+                    .push([i as u32, (i + 1) as u32, (i + steps) as u32]);
 
                 // Second triangle
-                self.polygons.push([i + 1, i + steps + 1, i + steps]);
+                self.polygons
+                    .push([(i + 1) as u32, (i + steps + 1) as u32, (i + steps) as u32]);
+
             }
         }
     }

@@ -1,4 +1,10 @@
+# Rust stuff
 /target
 **/*.rs.bk
-
 *.obj
+
+# IDEA stuff
+.idea
+
+# SPIR-V shaders
+*.spv
